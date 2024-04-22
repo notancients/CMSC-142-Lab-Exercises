@@ -14,43 +14,11 @@ int main(){
     getCombination(N);
 }
 
-void printGrid(int N, int** grid) {
-	for (int i = 0; i < N; i++) {
-		for ( int j = 0; j < N; j++) {
-			printf("%d\t", grid[i][j]);
-		}
-		printf("\n");
-	}
-}
-
-int** initializeGrid(int N) {
-	int** grid = (int**)malloc(sizeof(int*)*N);
-	for (int i = 0; i<N; i++) {
-		grid[i] = (int*)malloc(sizeof(int)*N);
-	}
-	
-	for(int i = 0; i < N; i++) {
-		for (int j = 0; j<N; j++) {
-			grid[i][j] = -1;
-		}
-	}
-	return grid;
-}
-
-void printTopOfStack(int* topOfStackArray, int N) {
-	printf("Stack top array: ");
-	for (int i = 0; i < N; i++) {
-		printf("%d\t", topOfStackArray[i]);
-	}
-	printf("\n");
-}
-
 void getCombination(int N) {
     int start, targetStack;
 	int stackTopArray[N+2]; //array of top of stacks
 	int optionGrid[N+2][N+2]; //array of stacks of optionGrids
 	int i, candidate;
-	// int** optionGrid = initializeGrid(N);
 
     start = 0;
 
@@ -60,7 +28,6 @@ void getCombination(int N) {
     
 	while (stackTopArray[start] >0) //while dummy stack is not empty
 	{
-		printTopOfStack(stackTopArray, N);
 		if(stackTopArray[targetStack]>0) {
 			targetStack++;
 			stackTopArray[targetStack]=0; //initialize new targetStack
@@ -111,6 +78,5 @@ void getCombination(int N) {
 			stackTopArray[targetStack]--; // then decrement the value of the top stack to the new target stack
             // this would be the part that would cause the value stackTopArray[start] to become zero terminating the entire while loop
         }
-		// printGrid(N, optionGrid);
 	}
 }
