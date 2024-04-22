@@ -39,7 +39,7 @@ int** initializeGrid(int N) {
 
 void printTopOfStack(int* topOfStackArray, int N) {
 	printf("Stack top array: ");
-	for (int i = 0; i < N; i++) {
+	for (int i = 0; i < N+2; i++) {
 		printf("%d\t", topOfStackArray[i]);
 	}
 	printf("\n");
@@ -60,10 +60,10 @@ void getCombination(int N) {
     
 	while (stackTopArray[start] >0) //while dummy stack is not empty
 	{
-		printTopOfStack(stackTopArray, N);
 		if(stackTopArray[targetStack]>0) {
 			targetStack++;
 			stackTopArray[targetStack]=0; //initialize new targetStack
+			// printTopOfStack(stackTopArray, N);
 
             // This part triggers if targetStack is now pointing to the last index in the array
             // E.G if N = 3, targetStack must be 4 (the arrow here is the targetStack)
@@ -86,6 +86,7 @@ void getCombination(int N) {
 					stackTopArray[targetStack]++;	// increment the top of stack at the first stack since we are repopulating, it would eventually become N
 					optionGrid[targetStack][stackTopArray[targetStack]] = candidate; // this is the part that puts 3, 2, 1 descending onto the grid
 					printf("stackTopArray[targetStack] %i candidate %i:\n", stackTopArray[targetStack], candidate);           
+					// printTopOfStack(stackTopArray, N);
 				}
 			}
 			else {
@@ -110,7 +111,8 @@ void getCombination(int N) {
 			targetStack--; // point to the previous stack
 			stackTopArray[targetStack]--; // then decrement the value of the top stack to the new target stack
             // this would be the part that would cause the value stackTopArray[start] to become zero terminating the entire while loop
-        }
+			// printTopOfStack(stackTopArray, N);
+		}
 		// printGrid(N, optionGrid);
 	}
 }
