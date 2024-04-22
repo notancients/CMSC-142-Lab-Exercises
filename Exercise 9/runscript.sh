@@ -1,3 +1,3 @@
 #!/bin/sh
-gcc mende_robles_exer9_verjoy.c
+gcc permutation_documentation.c
 ./a.out < input.in
