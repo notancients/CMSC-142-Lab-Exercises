@@ -1,0 +1,11 @@
+Running time:
+In graphColoring() we can be sure that the code will run |v| times since we
+have to color all vertices.
+
+Finding the available color consists of two parts,
+checking the adjacency and checking availability of
+colors. Both have a maximum time of |v| assuming that
+all vertices are connected to each other and therefore
+needing a different color for each one for a total
+of |v|.
+
